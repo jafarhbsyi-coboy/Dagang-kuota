@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Jual Kuota Murah</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    text-align: center;
+    color: white;
+    padding: 30px;
+}
+
+.card {
+    background: white;
+    color: black;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 350px;
+    margin: auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 24px;
+    color: green;
+    margin: 10px 0;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.buy {
+    background: #28a745;
+    color: white;
+}
+
+.buy:hover {
+    background: #218838;
+}
+
+.counter {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+.transfer {
+    margin-top: 15px;
+    font-size: 14px;
+}
+</style>
+
+</head>
+<body>
+
+<h1>🔥 Promo Kuota Murah 🔥</h1>
+
+<div class="card">
+    <h2>Paket Kuota 1 Bulan</h2>
+    <p>Internet lancar full 30 hari</p>
+    
+    <div class="price">Rp25.000</div>
+    
+    <button class="buy" onclick="beli()">Pesan Sekarang</button>
+
+    <div class="counter">
+        👥 Peminat: <span id="jumlah">0</span> orang
+    </div>
+
+    <div class="transfer">
+        💳 Transfer ke SeaBank:<br>
+        <b>901444860080</b>
+    </div>
+</div>
+
+<script>
+let jumlah = localStorage.getItem("peminat") || 0;
+document.getElementById("jumlah").innerText = jumlah;
+
+function beli() {
+    jumlah++;
+    localStorage.setItem("peminat", jumlah);
+    document.getElementById("jumlah").innerText = jumlah;
+
+    alert("Terimakasih sudah memesan!\nSilakan transfer ke SeaBank:\n901444860080");
+}
+</script>
+
+</body>
+</html>
