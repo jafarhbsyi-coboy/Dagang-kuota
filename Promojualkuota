@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jual Config ZIVPN</title>
+
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+}
+
+header {
+    background: #1e293b;
+    padding: 20px;
+    font-size: 22px;
+}
+
+.container {
+    padding: 20px;
+}
+
+.card {
+    background: #1e293b;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: #22c55e;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #16a34a;
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+    border-radius: 5px;
+    border: none;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+🔥 JUAL CONFIG ZIVPN 🔥
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Paket 7 Hari</h2>
+<p>Harga: Rp10.000</p>
+<button onclick="beli('7 Hari',10000)">Beli</button>
+</div>
+
+<div class="card">
+<h2>Paket 30 Hari</h2>
+<p>Harga: Rp25.000</p>
+<button onclick="beli('30 Hari',25000)">Beli</button>
+</div>
+
+<div class="card">
+<h2>Paket VIP (Anti Lemot)</h2>
+<p>Harga: Rp50.000</p>
+<button onclick="beli('VIP',50000)">Beli</button>
+</div>
+
+<div id="formBeli" style="display:none;">
+<h3>Isi Data Pembeli</h3>
+<input type="text" id="nama" placeholder="Nama kamu"><br>
+<input type="text" id="wa" placeholder="Nomor WhatsApp"><br>
+<button onclick="checkout()">Checkout</button>
+</div>
+
+<div id="info"></div>
+
+</div>
+
+<script>
+let paketDipilih = "";
+let hargaDipilih = 0;
+
+function beli(paket, harga) {
+    paketDipilih = paket;
+    hargaDipilih = harga;
+    document.getElementById("formBeli").style.display = "block";
+}
+
+function checkout() {
+    let nama = document.getElementById("nama").value;
+    let wa = document.getElementById("wa").value;
+
+    if(nama === "" || wa === "") {
+        alert("Isi data dulu!");
+        return;
+    }
+
+    let rekening = "901444860080"; // rekening kamu
+
+    document.getElementById("info").innerHTML = `
+    <h3>✅ Pesanan Berhasil</h3>
+    <p>Nama: ${nama}</p>
+    <p>Paket: ${paketDipilih}</p>
+    <p>Total: Rp${hargaDipilih}</p>
+    <p>Transfer ke Seabank: ${rekening}</p>
+    <br>
+    <button onclick="kirimWA('${nama}','${wa}')">Kirim ke WhatsApp</button>
+    `;
+}
+
+function kirimWA(nama, wa) {
+    let pesan = `Halo Admin, saya ${nama} sudah pesan config ZIVPN paket ${paketDipilih} sebesar Rp${hargaDipilih}. Mohon kirim config.`;
+
+    let url = "https://wa.me/" + wa + "?text=" + encodeURIComponent(pesan);
+    window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
